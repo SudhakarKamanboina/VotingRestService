@@ -175,7 +175,12 @@ public class ModeratorService implements IModeratorService
                     //String str1 = "[Android="+String.valueOf(poll.getResults()[0])+",iPhone="+String.valueOf(poll.getResults()[1])+"]";
                     System.out.print("\nPoll Expired of Moderator "+mod.getEmail());
                     //System.out.print("\n results "+str1);
-                       producerObj.sendExpiredMessage(mod.getEmail(), poll.getResults());
+                    if(!poll.isEmailSent()) {
+                        producerObj.sendExpiredMessage(mod.getEmail(), poll.getResults());
+                        poll.setEmailSent(true);
+                        mod.setPoll(poll.getId(), poll);
+                        modRepository.save(mod);
+                    }
                 }
 
             }

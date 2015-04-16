@@ -15,7 +15,7 @@ public class SchedulerConf {
     @Autowired
     IModeratorService serviceObj;
 
-    @Scheduled(fixedRate = 50000)
+    @Scheduled(fixedRate = 300000)
     public void messageScheduler()
     {
         System.out.println("Scheduler Started");

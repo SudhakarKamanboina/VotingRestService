@@ -33,6 +33,10 @@ public class KafkaProducer {
         String msg = email+":"+sjsuID+":"+"Poll Result "+ str1;
         KeyedMessage<Integer, String> data = new KeyedMessage<Integer, String>(topic, msg);
         producer.send(data);
+
+    }
+
+    public void closeProducer(){
         producer.close();
     }
 }

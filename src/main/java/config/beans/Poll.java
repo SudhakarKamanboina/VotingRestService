@@ -1,5 +1,6 @@
 package config.beans;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -16,6 +17,8 @@ public class Poll {
     String expired_at;
     String[] choice;
     int[] results;
+    @JsonIgnore
+    boolean emailSent=false;
 
     Poll()
     {
@@ -68,5 +71,13 @@ public class Poll {
 
     public void setResults(int[] results) {
         this.results = results;
+    }
+
+    public boolean isEmailSent() {
+        return emailSent;
+    }
+
+    public void setEmailSent(boolean emailSent) {
+        this.emailSent = emailSent;
     }
 }

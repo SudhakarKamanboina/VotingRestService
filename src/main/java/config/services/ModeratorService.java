@@ -162,6 +162,7 @@ public class ModeratorService implements IModeratorService
         Date currentDate = new Date();
         for(Moderator mod: modLst)
         {
+
             for(Poll poll: mod.getAllPolls())
             {
                 String expiredDate = poll.getExpired_at();
